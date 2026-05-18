@@ -10,11 +10,14 @@
     <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* Global Reset & Styles */
+        /* Global Reset & Base Configurations */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling when clicking menu links */
         }
         body {
             font-family: 'Montserrat', sans-serif;
@@ -22,103 +25,137 @@
             color: #333333;
             line-height: 1.8;
             font-size: 16px;
+            display: flex;
         }
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             color: #4a5759;
-            text-align: center;
         }
         
-        /* Layout Container */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Left Sidebar Panel Layout */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background-color: #ffffff;
+            border-right: 1px solid #e6e1da;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        .sidebar-title {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: #4a5759;
+            margin-bottom: 5px;
+        }
+        .sidebar-date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8b9a93;
+            margin-bottom: 40px;
+        }
+        
+        /* Navigation Links */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #666666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: block;
+        }
+        .nav-menu a:hover {
+            color: #4a5759;
+            padding-left: 5px;
+            font-weight: 500;
+        }
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: #999999;
+            letter-spacing: 1px;
+        }
+
+        /* Right Content Panel Layout */
+        .main-content {
+            margin-left: 280px; /* Pushes content to the right of the sidebar */
+            flex-grow: 1;
+            max-width: 900px;
+            padding: 60px 50px;
         }
         
         /* Section Styling */
         section {
-            margin-bottom: 60px;
-            padding-bottom: 40px;
+            padding: 60px 0;
             border-bottom: 1px solid #e6e1da;
+            scroll-margin-top: 40px; /* Offset spacing when viewport jumps to standard section id */
         }
         section:last-of-type {
             border-bottom: none;
         }
         
-        /* Intro Section */
-        .intro-section {
-            text-align: center;
-            padding-top: 20px;
-        }
+        /* Intro Section Element Specifics */
         .main-title {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-        .wedding-date {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #8b9a93;
-            margin-bottom: 30px;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
         .hero-image {
             width: 100%;
-            max-height: 500px;
+            max-height: 480px;
             object-fit: cover;
             border-radius: 4px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .intro-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-style: italic;
-            color: #555;
-            max-width: 650px;
-            margin: 0 auto;
+            color: #4a4a4a;
         }
         
-        /* General Grid / Cards */
+        /* Headings & Multi-column Cards */
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: 30px;
             letter-spacing: 1px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 1px;
-            background-color: #8b9a93;
-            margin: 10px auto 0 auto;
         }
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
             margin-top: 20px;
         }
         .card {
             background-color: #ffffff;
             padding: 25px;
             border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.01);
             border: 1px solid #f0ede9;
         }
         .card h3 {
             font-size: 1.6rem;
-            margin-bottom: 15px;
-            text-align: left;
+            margin-bottom: 12px;
             color: #667771;
         }
         
-        /* Schedule List */
+        /* Schedule Lists */
         .schedule-item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .schedule-day {
             font-size: 1.1rem;
@@ -128,22 +165,14 @@
             letter-spacing: 1px;
             margin-bottom: 5px;
         }
-        .schedule-details {
-            font-size: 0.95rem;
-            color: #666;
-        }
         .sub-list {
             margin-left: 20px;
-            margin-top: 5px;
+            margin-top: 8px;
             list-style-type: square;
-            color: #777;
+            color: #666;
         }
         
-        /* RSVP Button */
-        .rsvp-container {
-            text-align: center;
-            padding: 20px 0;
-        }
+        /* RSVP Styling Elements */
         .rsvp-button {
             display: inline-block;
             background-color: #667771;
@@ -156,63 +185,109 @@
             border-radius: 4px;
             transition: background-color 0.3s ease;
             font-weight: 500;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .rsvp-button:hover {
             background-color: #4a5759;
         }
         
-        /* Contacts block */
+        /* Contact Formats */
         .contacts {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .contact-group {
-            text-align: center;
+            gap: 50px;
+            margin-top: 15px;
         }
         .contact-group span {
             font-weight: 500;
             color: #667771;
         }
 
-        /* Final Section */
+        /* Final Section Statement */
         .final-section {
-            text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-style: italic;
             color: #4a5759;
-            padding: 40px 0;
+            padding: 60px 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
+        /* Responsive UI Optimization (Mobile / Tablet views) */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 30px 20px;
+                border-right: none;
+                border-bottom: 1px solid #e6e1da;
+                align-items: center;
+                text-align: center;
+            }
+            .sidebar-date {
+                margin-bottom: 20px;
+            }
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .sidebar-footer {
+                display: none; /* Hide secondary copyright footer text block on mobile viewports */
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 40px 20px;
+                max-width: 100%;
+            }
             .grid-2 {
                 grid-template-columns: 1fr;
             }
             .main-title {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             .contacts {
                 flex-direction: column;
-                align-items: center;
+                gap: 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <!-- Intro + Picture -->
-        <section class="intro-section">
-            <h1 class="main-title">We’re getting married</h1>
-            <div class="wedding-date">November 7, 2026</div>
+    <!-- Left Navigation Panel Menu -->
+    <nav class="sidebar">
+        <div>
+            <h1 class="sidebar-title">Our Wedding</h1>
+            <div class="sidebar-date">07.11.2026</div>
             
-            <!-- Reference Picture Link (Name your file wedding-photo.jpg in GitHub) -->
+            <ul class="nav-menu">
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#the-day">The Day</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#dress-code">Dress Code</a></li>
+                <li><a href="#accommodation">Accommodation</a></li>
+                <li><a href="#gifts">Gifts</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#questions">Questions</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            November 2026
+        </div>
+    </nav>
+
+    <!-- Main Dynamic Right Layout Panels -->
+    <main class="main-content">
+
+        <!-- Welcome (Intro + Picture) -->
+        <section id="welcome" style="padding-top: 0;">
+            <h1 class="main-title">We’re getting married</h1>
+            
+            <!-- Reference Picture Link (Upload your image file named wedding-photo.jpg to the repo) -->
             <img src="wedding-photo.jpg" alt="Wedding Portrait" class="hero-image" onerror="this.style.display='none';">
             
             <div class="intro-text">
@@ -235,7 +310,7 @@
                 </div>
                 <div class="card">
                     <h3>Dinner & Party</h3>
-                    <p><strong>Time:</strong> 19:00 (07.11)</p>
+                    <p><strong>Time:</strong> 19:00</p>
                     <p><strong>Location:</strong> Nemsdorfer Hofgarten</p>
                 </div>
             </div>
@@ -247,8 +322,8 @@
             
             <div class="schedule-item">
                 <div class="schedule-day">Friday</div>
-                <p class="schedule-details">We’ll meet for a relaxed dinner and drinks at a restaurant nearby. This is completely optional, but we’d be very happy to see everyone already on Friday evening before the official celebrations begin.</p>
-                <p class="schedule-details"><em>More details will follow closer to the date.</em></p>
+                <p>We’ll meet for a relaxed dinner and drinks at a restaurant nearby. This is completely optional, but we’d be very happy to see everyone already on Friday evening before the official celebrations begin.</p>
+                <p style="font-style: italic; color: #666; margin-top: 5px;">More details will follow closer to the date.</p>
             </div>
 
             <div class="schedule-item">
@@ -263,55 +338,50 @@
 
             <div class="schedule-item">
                 <div class="schedule-day">Sunday</div>
-                <p class="schedule-details">Coffee, brunch, and goodbyes.</p>
-                <p class="schedule-details"><em>(Exact timings will be updated closer to the wedding.)</em></p>
+                <p>Coffee, brunch, and goodbyes.</p>
+                <p style="font-style: italic; color: #666; margin-top: 5px;">(Exact timings will be updated closer to the wedding.)</p>
             </div>
         </section>
 
         <!-- Dress Code -->
         <section id="dress-code">
             <h2 class="section-title">Dress Code</h2>
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <p><strong>Wear something you feel good in.</strong></p>
-                <p>Formal-ish, festive, comfortable enough to dance in. The dance floor has some small holes. Normal high heels are completely fine, but if you’re planning on wearing stilettos, bring an extra pair of dance shoes / less clumsiness.</p>
-            </div>
+            <p style="margin-bottom: 10px;"><strong>Wear something you feel good in.</strong></p>
+            <p>Formal-ish, festive, comfortable enough to dance in. The dance floor has some small holes. Normal high heels are completely fine, but if you’re planning on wearing stilettos, bring an extra pair of dance shoes / less clumsiness.</p>
         </section>
 
         <!-- Accommodation -->
         <section id="accommodation">
             <h2 class="section-title">Accommodation</h2>
             <p>For guests travelling from afar, we recommend staying in:</p>
-            <div class="card" style="margin: 15px 0;">
-                <p><strong>Scandic Hotel</strong></p>
-                <p>You get a 15% discount with the code: <span style="background-color: #e6e1da; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 1rem;">EVENT</span></p>
+            <div class="card" style="margin: 20px 0; max-width: 500px;">
+                <p><strong>Scandic hotel</strong></p>
+                <p>You get a 15% discount with the code: <span style="background-color: #e6e1da; padding: 2px 6px; border-radius: 3px; font-family: monospace;">EVENT</span></p>
             </div>
             <p>Otherwise, anything in either Nürnberg or Stein is a short ride away from the venue.</p>
             <br>
-            <p style="font-size: 0.9rem; color: #883333; font-style: italic;"><strong>Note:</strong> As Nürnberg has a big fair that weekend, hotels might get booked out closer to the date. So if you’re certain of attending, it is better to book rooms as soon as possible.</p>
+            <p style="font-size: 0.95rem; color: #aa4444; font-style: italic;"><strong>Note:</strong> As Nürnberg has a big fair that weekend, hotels might get booked out closer to the date. So if you’re certain of attending, it is better to book rooms as soon as possible.</p>
         </section>
 
         <!-- Gifts -->
         <section id="gifts">
             <h2 class="section-title">Gifts</h2>
-            <div style="text-align: center;">
-                <p>Your presence is honestly the biggest gift to us.</p>
-                <p>But if you would like to give something, we would appreciate a monetary contribution. Copenhagen house prices at the moment are pretty high…</p>
-            </div>
+            <p>Your presence is honestly the biggest gift to us.</p>
+            <p>But if you would like to give something, we would appreciate a monetary contribution. Copenhagen house prices at the moment are pretty high…</p>
         </section>
 
         <!-- RSVP -->
-        <section id="rsvp" class="rsvp-container">
+        <section id="rsvp">
             <h2 class="section-title">RSVP</h2>
-            <p>Please let us know before [date] whether you can make it, by filling out our Google Form:</p>
-            
-            <!-- Replace # with your actual Google Form Link -->
+            <p>Please let us know before [date] whether you can make it, by filling out this Google Form:</p>
+            <!-- Replace # with your Google Form URL structure link -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0-gIZx8keJokI7zmWiDrvMT8dbUYW1mqa9cXPmnVrQ4oogQ/viewform?usp=header" target="_blank" class="rsvp-button">Open RSVP Form</a>
         </section>
 
         <!-- Questions? -->
         <section id="questions">
             <h2 class="section-title">Questions?</h2>
-            <p style="text-align: center; margin-bottom: 15px;">If you’re unsure about anything, just reach out:</p>
+            <p style="margin-bottom: 15px;">If you’re unsure about anything, just reach out:</p>
             <div class="contacts">
                 <div class="contact-group">
                     <span>Germany:</span><br>Carola Forster, Manuela Klehr
@@ -328,7 +398,7 @@
             <p>Thank you for being part of our lives — we can’t wait to celebrate together ❤️.</p>
         </section>
 
-    </div>
+    </main>
 
 </body>
 </html>
