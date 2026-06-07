@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
 font-family:'Montserrat',sans-serif;
@@ -29,25 +21,16 @@ color:#333;
 line-height:1.8;
 }
 
-section{
-scroll-margin-top:120px;
-}
-
 h1,h2,h3{
 font-family:'Cormorant Garamond',serif;
 font-weight:400;
 color:#4a5759;
 }
 
+/* FIXED: hero no longer sticky */
 header{
-position:sticky;
-top:0;
-z-index:1000;
 background:white;
-box-shadow:0 2px 12px rgba(0,0,0,.04);
 }
-
-/* HERO */
 
 .hero-slider{
 height:420px;
@@ -57,7 +40,7 @@ position:relative;
 
 .slider{
 display:flex;
-width:300%;
+width:400%;
 height:100%;
 animation:slide 18s infinite;
 }
@@ -70,32 +53,24 @@ flex-shrink:0;
 }
 
 @keyframes slide{
-
-0%,28%{
-transform:translateX(0);
-}
-
-33%,61%{
-transform:translateX(-100vw);
-}
-
-66%,95%{
-transform:translateX(-200vw);
-}
-
-100%{
-transform:translateX(0);
-}
-
+0%,20%{transform:translateX(0);}
+25%,45%{transform:translateX(-100vw);}
+50%,70%{transform:translateX(-200vw);}
+75%,95%{transform:translateX(-300vw);}
+100%{transform:translateX(0);}
 }
 
 .nav{
+position:sticky;
+top:0;
+z-index:1000;
 display:flex;
 justify-content:center;
 gap:35px;
 padding:20px;
 flex-wrap:wrap;
 background:white;
+box-shadow:0 2px 12px rgba(0,0,0,.04);
 }
 
 .nav a{
@@ -107,9 +82,7 @@ text-transform:uppercase;
 transition:.3s;
 }
 
-.nav a:hover{
-color:#667771;
-}
+.nav a:hover{color:#667771;}
 
 .container{
 max-width:1100px;
@@ -120,6 +93,7 @@ padding:60px 30px;
 section{
 padding:80px 0;
 border-bottom:1px solid #e8e3dc;
+scroll-margin-top:100px;
 }
 
 .section-title{
@@ -128,11 +102,7 @@ margin-bottom:30px;
 text-align:center;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px;
-}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px;}
 
 .card{
 background:white;
@@ -142,13 +112,7 @@ border:1px solid #eee;
 box-shadow:0 4px 16px rgba(0,0,0,.03);
 }
 
-/* SCHEDULE */
-
-.schedule{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:20px;
-}
+.schedule{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
 
 .schedule-card{
 background:white;
@@ -159,346 +123,99 @@ text-align:center;
 box-shadow:0 4px 14px rgba(0,0,0,.03);
 }
 
-.day{
-font-size:1.6rem;
-color:#667771;
-margin-bottom:8px;
-}
+.day{font-size:1.6rem;color:#667771;margin-bottom:8px;}
+.time{font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:12px;}
+.code{background:#e6e1da;padding:4px 8px;border-radius:6px;font-family:monospace;}
+.rsvp-button{display:inline-block;padding:15px 35px;background:#667771;color:white;border-radius:10px;text-decoration:none;margin-top:25px;}
 
-.time{
-font-size:.85rem;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#888;
-margin-bottom:12px;
-}
-
-.code{
-background:#e6e1da;
-padding:4px 8px;
-border-radius:6px;
-font-family:monospace;
-}
-
-.rsvp-button{
+.rsvp-deadline{
 display:inline-block;
-padding:15px 35px;
 background:#667771;
 color:white;
-border-radius:10px;
-text-decoration:none;
-margin-top:25px;
+padding:18px 30px;
+margin:20px 0 30px;
+border-radius:14px;
+font-size:1.1rem;
+font-weight:600;
+letter-spacing:1px;
+box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 
-.center{
-text-align:center;
-}
+.rsvp-deadline strong{display:block;font-size:1.6rem;margin-top:6px;}
+.center{text-align:center;}
 
 @media(max-width:900px){
-
-.grid,
-.schedule{
-grid-template-columns:1fr;
+.grid,.schedule{grid-template-columns:1fr;}
+.hero-slider{height:250px;}
 }
-
-.hero-slider{
-height:250px;
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <header>
-
 <div class="hero-slider">
-
 <div class="slider">
-
-<img src="wedding-photo.jpg">
+<img src="1.jpg">
 <img src="2.jpg">
 <img src="3.jpg">
 <img src="4.jpg">
 </div>
-
 </div>
+</header>
 
 <nav class="nav">
-
 <a href="#welcome">Welcome</a>
 <a href="#schedule">Schedule</a>
 <a href="#logistics">Logistics</a>
 <a href="#rsvp">RSVP</a>
 <a href="#contacts">Contacts</a>
 <a href="#questions">Questions</a>
-
 </nav>
-
-</header>
 
 <div class="container">
 
 <section id="welcome">
-
-<h1 class="section-title">
-We're Getting Married
-</h1>
-
-<p>
-On 7 November 2026 we'll gather our favourite people for a wedding, good food, drinks, and hopefully some questionable dancing.
-</p>
-
+<h1 class="section-title">We're Getting Married</h1>
+<p>On 7 November 2026 we'll gather our favourite people for a wedding, good food, drinks, and hopefully some questionable dancing.</p>
 <br>
-
-<p>
-We'd love for you to join us.
-</p>
-
+<p>We'd love for you to join us.</p>
 <br>
-
-<p>
-Instead of a traditional invitation, we made this little website with all the practical information for the weekend. More information will be available here as we get closer to the date.
-</p>
-
+<p>Instead of a traditional invitation, we made this little website with all the practical information for the weekend. More information will be available here as we get closer to the date.</p>
 </section>
-
 
 <section id="schedule">
-
-<h2 class="section-title">
-Wedding Weekend
-</h2>
-
+<h2 class="section-title">Wedding Weekend</h2>
 <div class="schedule">
-
-<div class="schedule-card">
-<div class="day">Friday</div>
-<div class="time">19:00</div>
-Optional dinner & drinks
+<div class="schedule-card"><div class="day">Friday</div><div class="time">19:00</div>Optional dinner & drinks</div>
+<div class="schedule-card"><div class="day">Saturday</div><div class="time">15:00</div>Ceremony</div>
+<div class="schedule-card"><div class="day">Saturday</div><div class="time">16:30</div>Reception</div>
+<div class="schedule-card"><div class="day">Saturday</div><div class="time">19:00</div>Dinner & Party</div>
+<div class="schedule-card"><div class="day">Sunday</div><div class="time">10:30</div>Brunch & Goodbyes</div>
 </div>
-
-<div class="schedule-card">
-<div class="day">Saturday</div>
-<div class="time">15:00</div>
-Ceremony
-</div>
-
-<div class="schedule-card">
-<div class="day">Saturday</div>
-<div class="time">16:30</div>
-Reception
-</div>
-
-<div class="schedule-card">
-<div class="day">Saturday</div>
-<div class="time">19:00</div>
-Dinner & Party
-</div>
-
-<div class="schedule-card">
-<div class="day">Sunday</div>
-<div class="time">10:30</div>
-Brunch & Goodbyes
-</div>
-
-</div>
-
 </section>
 
-
-<section id="logistics">
-
-<h2 class="section-title">
-Logistics
-</h2>
-
+<section id="logistics"><h2 class="section-title">Logistics</h2>
 <div class="grid">
-
-<div class="card">
-
-<h3>Venue</h3>
-
-<p>
-Venue details here
-</p>
-
+<div class="card"><h3>Venue</h3><p>Venue details here</p></div>
+<div class="card"><h3>How to get there (from Copenhagen)</h3><p>Travel details will be added closer to the date.</p></div>
+<div class="card"><h3>How to get to the venue</h3><p>Transport information, maps and parking details will be added closer to the date.</p></div>
+<div class="card"><h3>Accommodation in Nürnberg</h3><p>For guests travelling from afar, we recommend staying at:</p><br><p><a href="https://www.scandichotels.com/en/hotels/scandic-nuernberg-central">Scandic Nürnberg Central</a></p><br><p>15% discount code: <span class="code">EVENT</span></p><br><p>Otherwise, anything in Nürnberg or Stein is a short ride away from the venue.</p><br><p><strong>Note:</strong> As Nürnberg has a big fair that weekend, hotels might get booked out closer to the date. So if you're certain of attending, it is better to book rooms as soon as possible.</p></div>
 </div>
-
-<div class="card">
-
-<h3>How to get there (from Copenhagen)</h3>
-
-<p>
-Travel details will be added closer to the date.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>How to get to the venue</h3>
-
-<p>
-Transport information, maps and parking details will be added closer to the date.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Accommodation in Nürnberg</h3>
-
-<p>
-For guests travelling from afar, we recommend staying at:
-</p>
-
-<br>
-
-<p>
-
-<a href="https://www.scandichotels.com/en/hotels/scandic-nuernberg-central">
-
-Scandic Nürnberg Central
-
-</a>
-
-</p>
-
-<br>
-
-<p>
-
-15% discount code:
-
-<span class="code">
-EVENT
-</span>
-
-</p>
-
-<br>
-
-<p>
-Otherwise, anything in Nürnberg or Stein is a short ride away from the venue.
-</p>
-
-<br>
-
-<p>
-
-<strong>Note:</strong>
-
-As Nürnberg has a big fair that weekend, hotels might get booked out closer to the date. So if you're certain of attending, it is better to book rooms as soon as possible.
-
-</p>
-
-</div>
-
-</div>
-
 </section>
-
 
 <section id="rsvp" class="center">
-
-<h2 class="section-title">
-RSVP
-</h2>
-
-<p>
-
-Please let us know before [date].
-
-</p>
-
-<a class="rsvp-button"
-href="https://docs.google.com/forms/d/e/1FAIpQLSe0-gIZx8keJokI7zmWiDrvMT8dbUYW1mqa9cXPmnVrQ4oogQ/viewform?usp=header"
-target="_blank">
-
-Open RSVP Form
-
-</a>
-
+<h2 class="section-title">RSVP</h2>
+<p>Please let us know before 01.08.2026.</p>
+<a class="rsvp-button" href="https://docs.google.com/forms/d/e/1FAIpQLSe0-gIZx8keJokI7zmWiDrvMT8dbUYW1mqa9cXPmnVrQ4oogQ/viewform?usp=header" target="_blank">Open RSVP Form</a>
 </section>
 
+<section id="contacts"><h2 class="section-title">Contacts</h2><div class="grid">
+  <div class="card">Carola Forster / Manuela Klehr</div>
+  <div class="card">Manuel Montoya / Christian Rising Matthiesen</div>
+</div></section>
 
-<section id="contacts">
-
-<h2 class="section-title">
-Contacts
-</h2>
-
-<div class="grid">
-
-<div class="card">
-Carola Forster / Manuela Klehr
-</div>
-
-<div class="card">
-Manuel Montoya / Christian Rising Matthiesen
-</div>
+<section id="questions"><h2 class="section-title">Questions</h2><div class="card"><h3>Dress Code</h3><p><strong>Wear something you feel good in.</strong></p><br><p>Formal-ish, festive, comfortable enough to dance in. The dance floor has some small holes. Normal high heels are completely fine, but if you're planning on wearing stilettos, bring an extra pair of dance shoes / less clumsiness.</p></div><br><br><div class="card"><h3>Gifts</h3><p>Your presence is honestly the biggest gift to us.</p><br><p>But if you would like to give something, we would appreciate a monetary contribution. Copenhagen house prices at the moment are pretty high…</p></div></section>
 
 </div>
-
-</section>
-
-
-<section id="questions">
-
-<h2 class="section-title">
-Questions
-</h2>
-
-<div class="card">
-
-<h3>Dress Code</h3>
-
-<p>
-
-<strong>Wear something you feel good in.</strong>
-
-</p>
-
-<br>
-
-<p>
-
-Formal-ish, festive, comfortable enough to dance in. The dance floor has some small holes. Normal high heels are completely fine, but if you’re planning on wearing stilettos, bring an extra pair of dance shoes / less clumsiness.
-
-</p>
-
-</div>
-
-<br><br>
-
-<div class="card">
-
-<h3>Gifts</h3>
-
-<p>
-
-Your presence is honestly the biggest gift to us.
-
-</p>
-
-<br>
-
-<p>
-
-But if you would like to give something, we would appreciate a monetary contribution. Copenhagen house prices at the moment are pretty high…
-
-</p>
-
-</div>
-
-</section>
-
-</div>
-
 </body>
 </html>
-```
