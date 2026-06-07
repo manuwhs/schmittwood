@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Wedding - November 7, 2026</title>
+<title>Our Wedding - November 2026</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,28 +29,28 @@ color:#333;
 line-height:1.8;
 }
 
+section{
+scroll-margin-top:120px;
+}
+
 h1,h2,h3{
 font-family:'Cormorant Garamond',serif;
 font-weight:400;
 color:#4a5759;
 }
 
-img{
-max-width:100%;
-}
-
-/* ---------------- HEADER ---------------- */
-
 header{
 position:sticky;
 top:0;
 z-index:1000;
 background:white;
-box-shadow:0 2px 10px rgba(0,0,0,.05);
+box-shadow:0 2px 12px rgba(0,0,0,.04);
 }
 
+/* HERO */
+
 .hero-slider{
-height:350px;
+height:420px;
 overflow:hidden;
 position:relative;
 }
@@ -58,27 +58,33 @@ position:relative;
 .slider{
 display:flex;
 width:300%;
+height:100%;
 animation:slide 18s infinite;
 }
 
 .slider img{
-width:100%;
-height:350px;
+width:100vw;
+height:100%;
 object-fit:cover;
+flex-shrink:0;
 }
 
 @keyframes slide{
 
-0%,30%{
+0%,28%{
 transform:translateX(0);
 }
 
-33%,63%{
-transform:translateX(-100%);
+33%,61%{
+transform:translateX(-100vw);
 }
 
-66%,100%{
-transform:translateX(-200%);
+66%,95%{
+transform:translateX(-200vw);
+}
+
+100%{
+transform:translateX(0);
 }
 
 }
@@ -86,7 +92,7 @@ transform:translateX(-200%);
 .nav{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:35px;
 padding:20px;
 flex-wrap:wrap;
 background:white;
@@ -95,9 +101,9 @@ background:white;
 .nav a{
 text-decoration:none;
 color:#666;
-text-transform:uppercase;
 font-size:.85rem;
-letter-spacing:1px;
+letter-spacing:2px;
+text-transform:uppercase;
 transition:.3s;
 }
 
@@ -105,33 +111,24 @@ transition:.3s;
 color:#667771;
 }
 
-/* ---------------- MAIN ---------------- */
-
 .container{
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 padding:60px 30px;
 }
 
 section{
 padding:80px 0;
-border-bottom:1px solid #e6e1da;
+border-bottom:1px solid #e8e3dc;
 }
 
 .section-title{
 font-size:3rem;
-margin-bottom:35px;
+margin-bottom:30px;
 text-align:center;
 }
 
-.intro{
-text-align:center;
-max-width:900px;
-margin:auto;
-font-size:1.15rem;
-}
-
-.grid-2{
+.grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:25px;
@@ -140,31 +137,14 @@ gap:25px;
 .card{
 background:white;
 padding:30px;
-border-radius:16px;
+border-radius:14px;
 border:1px solid #eee;
-box-shadow:0 5px 18px rgba(0,0,0,.03);
+box-shadow:0 4px 16px rgba(0,0,0,.03);
 }
 
-.card h3{
-margin-bottom:10px;
-}
+/* SCHEDULE */
 
-/* ---------------- TIMETABLE ---------------- */
-
-.schedule-wrapper{
-margin-top:50px;
-}
-
-.schedule-header{
-text-align:center;
-margin-bottom:30px;
-}
-
-.schedule-header h3{
-font-size:2rem;
-}
-
-.schedule-grid{
+.schedule{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:20px;
@@ -172,135 +152,63 @@ gap:20px;
 
 .schedule-card{
 background:white;
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 6px 18px rgba(0,0,0,.04);
+border-radius:14px;
+padding:25px;
 border:1px solid #e6e1da;
-transition:.3s;
-}
-
-.schedule-card:hover{
-transform:translateY(-6px);
-}
-
-.schedule-day{
-background:#667771;
-color:white;
-padding:15px;
 text-align:center;
-font-family:'Cormorant Garamond',serif;
-font-size:1.6rem;
-}
-
-.schedule-content{
-padding:25px;
-text-align:center;
-}
-
-.schedule-time{
-font-size:.8rem;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#999;
-margin-bottom:10px;
-}
-
-.schedule-event{
-font-size:1rem;
-}
-
-.schedule-note{
-margin-top:10px;
-font-size:.85rem;
-font-style:italic;
-color:#777;
-}
-
-/* ---------------- CONTACTS ---------------- */
-
-.contacts-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:25px;
-margin-top:40px;
-}
-
-.contact-card{
-text-align:center;
-background:white;
-padding:25px;
-border-radius:16px;
 box-shadow:0 4px 14px rgba(0,0,0,.03);
 }
 
-.contact-card img{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-margin-bottom:15px;
+.day{
+font-size:1.6rem;
+color:#667771;
+margin-bottom:8px;
 }
 
-/* ---------------- FAQ ---------------- */
-
-.faq-item{
-background:white;
-padding:25px;
-border-radius:12px;
-margin-bottom:20px;
+.time{
+font-size:.85rem;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#888;
+margin-bottom:12px;
 }
 
-.faq-item h3{
-margin-bottom:10px;
+.code{
+background:#e6e1da;
+padding:4px 8px;
+border-radius:6px;
+font-family:monospace;
 }
-
-/* ---------------- BUTTON ---------------- */
 
 .rsvp-button{
 display:inline-block;
-padding:16px 35px;
+padding:15px 35px;
 background:#667771;
 color:white;
+border-radius:10px;
 text-decoration:none;
-border-radius:12px;
-margin-top:30px;
+margin-top:25px;
 }
 
-.rsvp-button:hover{
-background:#4a5759;
+.center{
+text-align:center;
 }
-
-/* ---------------- MOBILE ---------------- */
 
 @media(max-width:900px){
 
-.schedule-grid{
-grid-template-columns:1fr;
-}
-
-.grid-2{
-grid-template-columns:1fr;
-}
-
-.contacts-grid{
+.grid,
+.schedule{
 grid-template-columns:1fr;
 }
 
 .hero-slider{
-height:220px;
-}
-
-.slider img{
-height:220px;
-}
-
-.section-title{
-font-size:2.2rem;
+height:250px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -311,10 +219,10 @@ font-size:2.2rem;
 
 <div class="slider">
 
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-
+<img src="wedding-photo.jpg">
+<img src="2.jpg">
+<img src="3.jpg">
+<img src="4.jpg">
 </div>
 
 </div>
@@ -322,7 +230,6 @@ font-size:2.2rem;
 <nav class="nav">
 
 <a href="#welcome">Welcome</a>
-<a href="#day">The Day</a>
 <a href="#schedule">Schedule</a>
 <a href="#logistics">Logistics</a>
 <a href="#rsvp">RSVP</a>
@@ -333,7 +240,6 @@ font-size:2.2rem;
 
 </header>
 
-
 <div class="container">
 
 <section id="welcome">
@@ -342,8 +248,6 @@ font-size:2.2rem;
 We're Getting Married
 </h1>
 
-<div class="intro">
-
 <p>
 On 7 November 2026 we'll gather our favourite people for a wedding, good food, drinks, and hopefully some questionable dancing.
 </p>
@@ -351,41 +255,14 @@ On 7 November 2026 we'll gather our favourite people for a wedding, good food, d
 <br>
 
 <p>
-We'd love for you to celebrate with us.
+We'd love for you to join us.
 </p>
 
-</div>
+<br>
 
-</section>
-
-
-<section id="day">
-
-<h2 class="section-title">
-The Day
-</h2>
-
-<div class="grid-2">
-
-<div class="card">
-
-<h3>Ceremony</h3>
-
-<p><strong>Time:</strong> XX:XX</p>
-<p><strong>Location:</strong> Venue Name</p>
-
-</div>
-
-<div class="card">
-
-<h3>Dinner & Party</h3>
-
-<p><strong>Time:</strong> 19:00</p>
-<p><strong>Location:</strong> Nemsdorfer Hofgarten</p>
-
-</div>
-
-</div>
+<p>
+Instead of a traditional invitation, we made this little website with all the practical information for the weekend. More information will be available here as we get closer to the date.
+</p>
 
 </section>
 
@@ -396,118 +273,36 @@ The Day
 Wedding Weekend
 </h2>
 
-<div class="schedule-wrapper">
-
-<div class="schedule-grid">
+<div class="schedule">
 
 <div class="schedule-card">
-
-<div class="schedule-day">
-Friday
+<div class="day">Friday</div>
+<div class="time">19:00</div>
+Optional dinner & drinks
 </div>
-
-<div class="schedule-content">
-
-<div class="schedule-time">
-Evening
-</div>
-
-<div class="schedule-event">
-Dinner & Drinks
-</div>
-
-<div class="schedule-note">
-Optional gathering
-</div>
-
-</div>
-
-</div>
-
 
 <div class="schedule-card">
-
-<div class="schedule-day">
-Saturday
-</div>
-
-<div class="schedule-content">
-
-<div class="schedule-time">
-15:00
-</div>
-
-<div class="schedule-event">
+<div class="day">Saturday</div>
+<div class="time">15:00</div>
 Ceremony
 </div>
 
-</div>
-
-</div>
-
-
 <div class="schedule-card">
-
-<div class="schedule-day">
-Saturday
-</div>
-
-<div class="schedule-content">
-
-<div class="schedule-time">
-17:00
-</div>
-
-<div class="schedule-event">
+<div class="day">Saturday</div>
+<div class="time">16:30</div>
 Reception
 </div>
 
+<div class="schedule-card">
+<div class="day">Saturday</div>
+<div class="time">19:00</div>
+Dinner & Party
 </div>
-
-</div>
-
 
 <div class="schedule-card">
-
-<div class="schedule-day">
-Saturday
-</div>
-
-<div class="schedule-content">
-
-<div class="schedule-time">
-19:00
-</div>
-
-<div class="schedule-event">
-Dinner + Party
-</div>
-
-</div>
-
-</div>
-
-
-<div class="schedule-card">
-
-<div class="schedule-day">
-Sunday
-</div>
-
-<div class="schedule-content">
-
-<div class="schedule-time">
-10:00
-</div>
-
-<div class="schedule-event">
+<div class="day">Sunday</div>
+<div class="time">10:30</div>
 Brunch & Goodbyes
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -521,21 +316,35 @@ Brunch & Goodbyes
 Logistics
 </h2>
 
-<div class="grid-2">
+<div class="grid">
 
 <div class="card">
 
 <h3>Venue</h3>
 
-<p>Venue name and address here</p>
+<p>
+Venue details here
+</p>
 
 </div>
 
 <div class="card">
 
-<h3>How to get there</h3>
+<h3>How to get there (from Copenhagen)</h3>
 
-<p>Travel instructions from Copenhagen</p>
+<p>
+Travel details will be added closer to the date.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>How to get to the venue</h3>
+
+<p>
+Transport information, maps and parking details will be added closer to the date.
+</p>
 
 </div>
 
@@ -543,7 +352,49 @@ Logistics
 
 <h3>Accommodation in Nürnberg</h3>
 
-<p>Hotel recommendations and discounts</p>
+<p>
+For guests travelling from afar, we recommend staying at:
+</p>
+
+<br>
+
+<p>
+
+<a href="https://www.scandichotels.com/en/hotels/scandic-nuernberg-central">
+
+Scandic Nürnberg Central
+
+</a>
+
+</p>
+
+<br>
+
+<p>
+
+15% discount code:
+
+<span class="code">
+EVENT
+</span>
+
+</p>
+
+<br>
+
+<p>
+Otherwise, anything in Nürnberg or Stein is a short ride away from the venue.
+</p>
+
+<br>
+
+<p>
+
+<strong>Note:</strong>
+
+As Nürnberg has a big fair that weekend, hotels might get booked out closer to the date. So if you're certain of attending, it is better to book rooms as soon as possible.
+
+</p>
 
 </div>
 
@@ -552,23 +403,25 @@ Logistics
 </section>
 
 
-<section id="rsvp">
+<section id="rsvp" class="center">
 
 <h2 class="section-title">
 RSVP
 </h2>
 
-<p style="text-align:center">
-Please let us know before [date]
+<p>
+
+Please let us know before [date].
+
 </p>
 
-<div style="text-align:center">
+<a class="rsvp-button"
+href="https://docs.google.com/forms/d/e/1FAIpQLSe0-gIZx8keJokI7zmWiDrvMT8dbUYW1mqa9cXPmnVrQ4oogQ/viewform?usp=header"
+target="_blank">
 
-<a href="#" class="rsvp-button">
 Open RSVP Form
-</a>
 
-</div>
+</a>
 
 </section>
 
@@ -579,54 +432,14 @@ Open RSVP Form
 Contacts
 </h2>
 
-<div class="contacts-grid">
+<div class="grid">
 
-<div class="contact-card">
-
-<img src="person1.jpg">
-
-<h3>Carola Forster</h3>
-
-<p>Germany</p>
-
-<p>+49 XXX XXX</p>
-
+<div class="card">
+Carola Forster / Manuela Klehr
 </div>
 
-<div class="contact-card">
-
-<img src="person2.jpg">
-
-<h3>Manuela Klehr</h3>
-
-<p>Germany</p>
-
-<p>+49 XXX XXX</p>
-
-</div>
-
-<div class="contact-card">
-
-<img src="person3.jpg">
-
-<h3>Manuel Montoya</h3>
-
-<p>Denmark</p>
-
-<p>+45 XXX XXX</p>
-
-</div>
-
-<div class="contact-card">
-
-<img src="person4.jpg">
-
-<h3>Christian Rising Matthiesen</h3>
-
-<p>Denmark</p>
-
-<p>+45 XXX XXX</p>
-
+<div class="card">
+Manuel Montoya / Christian Rising Matthiesen
 </div>
 
 </div>
@@ -640,44 +453,47 @@ Contacts
 Questions
 </h2>
 
-<div class="faq-item">
+<div class="card">
 
 <h3>Dress Code</h3>
 
 <p>
-Formal-ish, festive and comfortable enough to dance.
+
+<strong>Wear something you feel good in.</strong>
+
+</p>
+
+<br>
+
+<p>
+
+Formal-ish, festive, comfortable enough to dance in. The dance floor has some small holes. Normal high heels are completely fine, but if you’re planning on wearing stilettos, bring an extra pair of dance shoes / less clumsiness.
+
 </p>
 
 </div>
 
-<div class="faq-item">
+<br><br>
+
+<div class="card">
 
 <h3>Gifts</h3>
 
 <p>
-Your presence is our biggest gift. Monetary contributions are appreciated.
+
+Your presence is honestly the biggest gift to us.
+
 </p>
 
-</div>
-
-<div class="faq-item">
-
-<h3>Additional Questions</h3>
+<br>
 
 <p>
-We'll continue adding answers here as the date gets closer.
+
+But if you would like to give something, we would appreciate a monetary contribution. Copenhagen house prices at the moment are pretty high…
+
 </p>
 
 </div>
-
-</section>
-
-
-<section style="border:none;text-align:center">
-
-<h2>
-We can't wait to celebrate with you ❤️
-</h2>
 
 </section>
 
