@@ -183,8 +183,7 @@ border-radius:2px;
 box-shadow:0 0 0 1px #d7d7d7;
 }
 
-.schedule{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
-
+.schedule{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:20px;max-width:900px;margin:0 auto;}
 .schedule-card{
 background:white;
 border-radius:14px;
@@ -220,8 +219,9 @@ margin-bottom:8px;
 }
 
 .schedule-card:nth-child(1) .day{background:#eef1f4;color:#415364;border-color:#d5dde4;}
-.schedule-card:nth-child(2) .day,
-.schedule-card:nth-child(3) .day,
+.schedule-card:nth-child(2) .day{background:#e9edf2;color:#33485a;border-color:#d2dbe4;}
+.schedule-card:nth-child(3) .day{background:#edf2ee;color:#3f5d49;border-color:#d6e0d8;}
+  
 .schedule-card:nth-child(4) .day{background:#e9edf2;color:#33485a;border-color:#d2dbe4;}
 .schedule-card:nth-child(5) .day{background:#edf2ee;color:#3f5d49;border-color:#d6e0d8;}
 .code{background:#e6e1da;padding:4px 8px;border-radius:6px;font-family:monospace;}
@@ -295,7 +295,7 @@ box-shadow:0 6px 18px rgba(0,0,0,.12);
 <section id="schedule">
 <h2 class="section-title">The Schedule</h2>
 <div class="schedule">
-<div class="schedule-card"><div class="day">Friday</div><div class="time">19:00</div><span class="optional-tag">Optional</span><br>Dinner & drinks at a restaurant in Nürnberg<br><small>(Location to be announced)</small></div>
+<div class="schedule-card"><div class="day">Friday</div><div class="time">19:00</div><span class="optional-tag">Optional</span><br>Get together with dinner & drinks at a restaurant in Nürnberg<span class="own-expense">*</span><br><small>(Location to be announced)</small></div>
 <div class="schedule-card">
 <div class="day">Saturday</div>
 <div class="schedule-slot">
