@@ -226,7 +226,17 @@ margin-bottom:8px;
 .schedule-card:nth-child(5) .day{background:#edf2ee;color:#3f5d49;border-color:#d6e0d8;}
 .code{background:#e6e1da;padding:4px 8px;border-radius:6px;font-family:monospace;}
 .rsvp-button{display:inline-block;padding:15px 35px;background:#667771;color:white;border-radius:10px;text-decoration:none;margin-top:25px;}
-
+.schedule-slot {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e5;
+}
+.schedule-slot:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+  
 .rsvp-deadline{
 display:inline-block;
 background:#667771;
@@ -273,7 +283,7 @@ box-shadow:0 6px 18px rgba(0,0,0,.12);
 <div class="container">
 
 <section id="welcome" style="padding-top:20px">
-<h1 class="section-title">We're Getting Married!<small style="font-size:0.4em; font-weight:normal;"> ... a second time!</small><br><span class="hero-symbols"><img class="hero-flag" src="https://flagcdn.com/w40/dk.png" alt="Denmark flag"><span class="hero-heart" aria-hidden="true">&#10084;</span><img class="hero-flag" src="https://flagcdn.com/w40/de.png" alt="Germany flag"></span></h1>
+<h1 class="section-title">We're Getting Married... a second time!<br><span class="hero-symbols"><img class="hero-flag" src="https://flagcdn.com/w40/dk.png" alt="Denmark flag"><span class="hero-heart" aria-hidden="true">&#10084;</span><img class="hero-flag" src="https://flagcdn.com/w40/de.png" alt="Germany flag"></span></h1>
 <p>On 7 November 2026, we'll gather our favourite people for a day of celebrating, good food, drinks, and, if all goes to plan, some questionable dancing.</p>
 <br>
 <p>Of course, we would love for you to be a part of it!</p>
@@ -281,13 +291,23 @@ box-shadow:0 6px 18px rgba(0,0,0,.12);
 <p>Instead of a traditional invitation, we've put together this little website with all the practical information you'll need for the weekend. We'll keep it updated as the big day approaches, so check back from time to time for the latest details.</p>
 </section>
 
+
 <section id="schedule">
 <h2 class="section-title">The Schedule</h2>
 <div class="schedule">
 <div class="schedule-card"><div class="day">Friday</div><div class="time">19:00</div><span class="optional-tag">Optional</span><br>Dinner & drinks at a restaurant in Nürnberg<br><small>(Location to be announced)</small></div>
-<div class="schedule-card"><div class="day">Saturday</div><div class="time">13:00</div><strong>Ceremony</strong><br><small>(More details to be announced)</small></div>
-<div class="schedule-card"><div class="day">Saturday</div><div class="time">16:30</div>Reception, Dinner & Party</div>
-<div class="schedule-card"><div class="day">Saturday</div><div class="time">02:00–???</div>Potential afterparty in the city</div>
+<div class="schedule-card">
+<div class="day">Saturday</div>
+<div class="schedule-slot">
+<div class="time">13:00</div><strong>Ceremony</strong><br><small>(More details to be announced)</small>
+</div>
+<div class="schedule-slot">
+<div class="time">16:30</div>Reception, Dinner & Party
+</div>
+<div class="schedule-slot">
+<div class="time">02:00–???</div>Potential afterparty in the city
+</div>
+</div>
 <div class="schedule-card"><div class="day">Sunday</div><div class="time">10:30</div><span class="optional-tag">Optional</span><br>Brunch & Goodbyes</div>
 </div>
 </section>
